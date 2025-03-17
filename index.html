@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=375px, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Happy Birthday Lilima</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <style>
+        .bg-gradient {
+            background: linear-gradient(135deg, #FF69B4 0%, #E6E6FA 100%);
+        }
+
+        .slick-slide img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="w-[375px] min-h-screen mx-auto bg-gradient">
+    <audio id="bg-music" loop autoplay>
+        <source src="/song/Happy_Birthday_5.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <button onclick="toggleMusic()" class="fixed top-4 right-4 bg-white px-4 py-2 rounded-full shadow-lg">🎵</button>
+
+    <div class="relative pt-8 pb-20">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-['Dancing_Script'] text-white floating">
+                Happy Birthday
+                <span class="block text-5xl mt-2">Lilima</span>
+            </h1>
+            <div class="sparkling text-2xl text-white mt-4">✨</div>
+        </div>
+        <div class="px-6">
+            <div class="bg-white rounded-lg p-6 shadow-lg mb-8">
+                <div class="text-center mb-4">
+                    <img src="img/img1.jpg" class="w-full h-48 object-cover rounded-lg mb-4" alt="Couple Photo" />
+                    <p class="font-['Dancing_Script'] text-2xl text-primary">From Samim to Lilima</p>
+                </div>
+                <div class="text-gray-700 leading-relaxed">
+                    <p class="mb-4">My dearest Lilima,</p>
+                    <p class="mb-4">On this special day, I want to tell you how much joy and love you bring into my
+                        life. Every moment with you is a treasure, and your smile lights up my world.</p>
+                    <p class="mb-4">You are not just my girlfriend, but my best friend, my confidante, and my greatest
+                        blessing. Your kindness, strength, and beautiful spirit inspire me every day.</p>
+                    <p class="text-right font-['Dancing_Script'] text-xl text-primary">Forever Yours, Samim ❤️</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg p-6 shadow-lg mb-8">
+                <h2 class="text-2xl font-['Dancing_Script'] text-primary mb-4 text-center">Our Special Moments</h2>
+                <div class="slider">
+                    <div><img src="img/img2.jpg" alt="Memory 1"></div>
+                    <div><img src="img/img3.jpg" alt="Memory 2"></div>
+                    <div><img src="img/img4.jpg" alt="Memory 3"></div>
+                    <div><img src="img/img5.jpg" alt="Memory 4"></div>
+                    <div><img src="img/img6.jpg" alt="Memory 4"></div>
+                    <div><img src="img/img7.jpg" alt="Memory 4"></div>
+                    <div><img src="img/img8.jpg" alt="Memory 4"></div>
+                    <div><img src="img/img9.jpg" alt="Memory 4"></div>
+                    <div><img src="img/img10.jpg" alt="Memory 4"></div>
+                    <div><img src="img/img11.jpg" alt="Memory 4"></div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg p-6 shadow-lg mb-8">
+                <h2 class="text-2xl font-['Dancing_Script'] text-primary mb-4 text-center">
+                    Birthday Wishes
+                </h2>
+                <div class="space-y-4">
+                    <div class="wish-card p-4 bg-secondary rounded-lg cursor-pointer" onclick="revealWish(this)">
+                        <p class="text-center text-primary">Click to reveal wish ❤️</p>
+                        <p class="hidden text-gray-700">
+                            May your day be filled with endless joy and laughter!
+                        </p>
+                    </div>
+                    <div class="wish-card p-4 bg-secondary rounded-lg cursor-pointer" onclick="revealWish(this)">
+                        <p class="text-center text-primary">Click to reveal wish ❤️</p>
+                        <p class="hidden text-gray-700">
+                            Wishing you all the happiness your heart can hold!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+        });
+        function revealWish(element) {
+            const hiddenText = element.querySelector(".hidden");
+            const clickText = element.querySelector(".text-primary");
+            if (hiddenText.classList.contains("hidden")) {
+                hiddenText.classList.remove("hidden");
+                clickText.classList.add("hidden");
+            } else {
+                hiddenText.classList.add("hidden");
+                clickText.classList.remove("hidden");
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const hearts = ["❤️", "💖", "💝", "💕"];
+            setInterval(() => {
+                const heart = document.createElement("div");
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.position = "fixed";
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.top = "-20px";
+                heart.style.fontSize = "20px";
+                heart.style.animation = "float 4s linear";
+                heart.style.opacity = "0.7";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000);
+            }, 1000);
+        });
+        function toggleMusic() {
+            var music = document.getElementById("bg-music");
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+    var music = document.getElementById("bg-music");
+
+    // Try autoplay (some browsers will block this)
+    setTimeout(() => {
+        music.play().catch(error => {
+            console.log("Autoplay blocked. Waiting for user interaction...");
+        });
+    }, 1000);
+
+    // Ensure music starts when user interacts with the page
+    document.body.addEventListener("click", function () {
+        if (music.paused) {
+            music.play();
+        }
+    });
+
+    // Toggle music function
+    window.toggleMusic = function () {
+        if (music.paused) {
+            music.play();
+        } else {
+            music.pause();
+        }
+    };
+});
+
+
+    </script>
+</body>
+</html>
