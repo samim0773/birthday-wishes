@@ -25,6 +25,44 @@
             object-fit: cover;
             border-radius: 10px;
         }
+
+        .wish-card {
+            transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #f3f4f6;
+            /* Soft background */
+            border: 2px solid transparent;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .wish-card:hover {
+            background-color: #e0e7ff;
+            /* Light blue */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            border-color: #6366f1;
+            /* Indigo border */
+        }
+
+        .wish-card:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .wish-card:focus-within {
+            animation: pulse 0.5s ease-in-out;
+        }
     </style>
 </head>
 
@@ -117,6 +155,14 @@
                 clickText.classList.remove("hidden");
             }
         }
+        function revealWish(element) {
+            const hiddenText = element.querySelector(".hidden");
+            if (hiddenText) {
+                hiddenText.classList.toggle("hidden");
+                hiddenText.classList.toggle("block");
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
             const hearts = ["❤️", "💖", "💝", "💕"];
             setInterval(() => {
@@ -141,33 +187,34 @@
             }
         }
         document.addEventListener("DOMContentLoaded", function () {
-    var music = document.getElementById("bg-music");
+            var music = document.getElementById("bg-music");
 
-    // Try autoplay (some browsers will block this)
-    setTimeout(() => {
-        music.play().catch(error => {
-            console.log("Autoplay blocked. Waiting for user interaction...");
+            // Try autoplay (some browsers will block this)
+            setTimeout(() => {
+                music.play().catch(error => {
+                    console.log("Autoplay blocked. Waiting for user interaction...");
+                });
+            }, 1000);
+
+            // Ensure music starts when user interacts with the page
+            document.body.addEventListener("click", function () {
+                if (music.paused) {
+                    music.play();
+                }
+            });
+
+            // Toggle music function
+            window.toggleMusic = function () {
+                if (music.paused) {
+                    music.play();
+                } else {
+                    music.pause();
+                }
+            };
         });
-    }, 1000);
-
-    // Ensure music starts when user interacts with the page
-    document.body.addEventListener("click", function () {
-        if (music.paused) {
-            music.play();
-        }
-    });
-
-    // Toggle music function
-    window.toggleMusic = function () {
-        if (music.paused) {
-            music.play();
-        } else {
-            music.pause();
-        }
-    };
-});
 
 
     </script>
 </body>
+
 </html>
